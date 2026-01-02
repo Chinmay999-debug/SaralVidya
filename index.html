@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaralVidya - Education Loan Platform</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Hide scrollbar for smooth look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <img src="SaralVidya.png" alt="SaralVidya Logo" class="h-12 w-auto">
+            </div>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#benefits" class="text-gray-600 hover:text-blue-700 font-medium transition-colors">Why Us</a>
+                <a href="#features" class="text-gray-600 hover:text-blue-700 font-medium transition-colors">Features</a>
+                <a href="#process" class="text-gray-600 hover:text-blue-700 font-medium transition-colors">Process</a>
+                <a href="#about" class="text-gray-600 hover:text-blue-700 font-medium transition-colors">About</a>
+                <button onclick="scrollToForm()" class="bg-blue-900 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-900/20">
+                    Apply Now
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 p-4 flex flex-col gap-4">
+            <a href="#benefits" class="mobile-link text-gray-700 py-2 border-b border-gray-100">Why Us</a>
+            <a href="#features" class="mobile-link text-gray-700 py-2 border-b border-gray-100">Features</a>
+            <a href="#process" class="mobile-link text-gray-700 py-2 border-b border-gray-100">Process</a>
+            <a href="#about" class="mobile-link text-gray-700 py-2 border-b border-gray-100">About</a>
+            <button onclick="scrollToForm(); toggleMenu();" class="bg-blue-900 text-white py-3 rounded-lg font-bold text-center">
+                Apply Now
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+        <!-- Decorative Blobs -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
+
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <!-- Hero Text -->
+                <div class="lg:w-1/2 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm font-bold mb-6 border border-blue-200">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        Authorised Channel Partner of Poonawalla Fincorp
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Education Loan Built for Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-teal-500">Dream Future</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Financing higher studies in India & abroad through a smooth, transparent, student-friendly process. Experience guided support, flexible repayment, and simplified documentation.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="scrollToForm()" class="px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-xl font-bold text-lg shadow-xl shadow-blue-900/20 hover:scale-105 transition-transform">
+                            Apply Now
+                        </button>
+                        <button class="px-8 py-4 bg-white text-blue-900 border-2 border-blue-100 rounded-xl font-bold text-lg hover:bg-blue-50 transition-colors">
+                            Check Eligibility
+                        </button>
+                    </div>
+
+                    <div class="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
+                        <div class="flex items-center gap-1">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-teal-500"></i> No Hidden Charges
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-teal-500"></i> Digital Process
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lead Form -->
+                <div class="lg:w-1/2 w-full max-w-md" id="lead-form-container">
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl border border-gray-100 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-teal-500"></div>
+                        
+                        <!-- Form Content -->
+                        <div id="form-content">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Get Free Loan Assistance</h3>
+                            <p class="text-gray-500 text-sm mb-6">Fill the details to get a call back from our expert.</p>
+                            
+                            <form id="loan-form" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Full Name</label>
+                                    <input required type="text" placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Mobile</label>
+                                        <input required type="tel" pattern="[0-9]{10}" placeholder="10-digit number" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Email</label>
+                                        <input required type="email" placeholder="name@email.com" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Course Location</label>
+                                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                                            <option>Study in India</option>
+                                            <option>USA</option>
+                                            <option>UK</option>
+                                            <option>Canada</option>
+                                            <option>Australia</option>
+                                            <option>Germany</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Loan Amount</label>
+                                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                                            <option>₹10L - ₹20L</option>
+                                            <option>₹20L - ₹40L</option>
+                                            <option>₹40L - ₹60L</option>
+                                            <option>Above ₹60L</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-xl hover:bg-blue-800 transition-colors shadow-lg flex items-center justify-center gap-2 group cursor-pointer">
+                                    Get Free Loan Assistance 
+                                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                                </button>
+
+                                <p class="text-xs text-center text-gray-400 mt-2">
+                                    By submitting, you agree to our Terms & Privacy Policy.
+                                </p>
+                            </form>
+                        </div>
+
+                        <!-- Success Message (Hidden by default) -->
+                        <div id="success-message" class="hidden h-64 flex flex-col items-center justify-center text-center">
+                            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+                                <i data-lucide="check-circle" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Request Submitted!</h3>
+                            <p class="text-gray-500 mt-2">Our expert counsellor will call you shortly.</p>
+                            <button onclick="resetForm()" class="mt-4 text-blue-600 text-sm font-semibold underline hover:text-blue-800">Submit another</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Why Choose Section -->
+    <section id="benefits" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose SaralVidya?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We make financing your education simple, transparent, and student-centric.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="mb-4 bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="globe" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">India & Abroad</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Comprehensive loan solutions for domestic and international studies.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="mb-4 bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Secured & Unsecured</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Flexible options with or without collateral based on your profile.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="mb-4 bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="percent" class="w-8 h-8 text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Competitive Rates</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Best-in-market interest rates tailored to your academic profile.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="mb-4 bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="file-text" class="w-8 h-8 text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Digital Process</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Minimal paperwork, pre-admission sanction, and fast disbursals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loan Snapshot (Stats) -->
+    <section class="py-16 bg-blue-900 text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-blue-700/50">
+                <div class="p-4">
+                    <p class="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-2">Loan Amount</p>
+                    <h3 class="text-3xl font-bold text-white mb-1">Up to ₹1 Cr</h3>
+                    <p class="text-xs text-blue-200">Unsecured (Higher with Collateral)</p>
+                </div>
+                <div class="p-4">
+                    <p class="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-2">Interest Rate</p>
+                    <h3 class="text-3xl font-bold text-white mb-1">Attractive</h3>
+                    <p class="text-xs text-blue-200">Floating rates (Lender based)</p>
+                </div>
+                <div class="p-4">
+                    <p class="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-2">Repayment Tenure</p>
+                    <h3 class="text-3xl font-bold text-white mb-1">Up to 15 Years</h3>
+                    <p class="text-xs text-blue-200">With flexible moratorium</p>
+                </div>
+                <div class="p-4">
+                    <p class="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-2">Processing</p>
+                    <h3 class="text-3xl font-bold text-white mb-1">Fast Track</h3>
+                    <p class="text-xs text-blue-200">Minimal paperwork decisions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage & Options -->
+    <section id="features" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col lg:flex-row gap-16">
+                
+                <!-- What We Cover -->
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6">100% Finance Coverage</h3>
+                    <p class="text-gray-600 mb-8">We don't just cover tuition. We cover the cost of your ambition.</p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="mt-1 bg-green-100 p-1 rounded-full text-green-600">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Tuition fees for College/University</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="mt-1 bg-green-100 p-1 rounded-full text-green-600">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Living & hostel expenses</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="mt-1 bg-green-100 p-1 rounded-full text-green-600">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Books, equipment & exam fees</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="mt-1 bg-green-100 p-1 rounded-full text-green-600">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Travel expenses for studies abroad</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="mt-1 bg-green-100 p-1 rounded-full text-green-600">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Laptop & other course-related costs</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Loan Options -->
+                <div class="lg:w-1/2 flex flex-col gap-6">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">Loan Options Tailored for You</h3>
+                    <p class="text-gray-600 mb-4">Choose the structure that fits your financial profile.</p>
+
+                    <!-- Unsecured Card -->
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-l-4 border-blue-600 hover:shadow-lg transition-shadow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-blue-900">Unsecured Education Loan</h4>
+                            <i data-lucide="graduation-cap" class="w-8 h-8 text-blue-200"></i>
+                        </div>
+                        <ul class="space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>For eligible institutes & strong profiles</li>
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>No collateral required</li>
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>Quick sanction based on merit</li>
+                        </ul>
+                    </div>
+
+                    <!-- Secured Card -->
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-l-4 border-teal-500 hover:shadow-lg transition-shadow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-teal-900">Secured Education Loan</h4>
+                            <i data-lucide="building-2" class="w-8 h-8 text-teal-200"></i>
+                        </div>
+                        <ul class="space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-teal-500 rounded-full"></div>Higher loan limits available</li>
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-teal-500 rounded-full"></div>Available against property/FD collateral</li>
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-teal-500 rounded-full"></div>Lower interest rates generally apply</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Flexible Repayment & Process -->
+    <section id="process" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            
+            <!-- Repayment Info -->
+            <div class="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-3xl p-8 md:p-12 mb-20 border border-blue-100">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <div class="inline-block bg-white text-indigo-600 px-4 py-1 rounded-full text-sm font-bold shadow-sm mb-4">
+                            Stress-Free Repayment
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Focus on Studies, Not EMI</h3>
+                        <p class="text-gray-600 mb-6">
+                            We understand that your focus should be on your education. That's why our repayment plans are designed with a <strong>Moratorium Period</strong>.
+                        </p>
+                        <div class="flex items-start gap-4">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <i data-lucide="clock" class="w-6 h-6 text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Course Period + 1 Year Grace</h4>
+                                <p class="text-sm text-gray-600 mt-1">You only start repaying the principal after you complete your course and have time to find a job.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 relative">
+                        <!-- Visual Representation -->
+                        <div class="bg-white rounded-xl shadow-lg p-6 relative z-10">
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-xs font-semibold text-gray-400 uppercase">Timeline</span>
+                                <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">Relaxed Mode</span>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="flex gap-4">
+                                    <div class="flex flex-col items-center">
+                                        <div class="w-4 h-4 rounded-full bg-blue-500"></div>
+                                        <div class="w-0.5 h-12 bg-blue-200"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm">Study Period</p>
+                                        <p class="text-xs text-gray-500">No Principal Repayment</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="flex flex-col items-center">
+                                        <div class="w-4 h-4 rounded-full bg-teal-500"></div>
+                                        <div class="w-0.5 h-12 bg-blue-200"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm">Grace Period (1 Year)</p>
+                                        <p class="text-xs text-gray-500">Job Hunt / Settlement</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="flex flex-col items-center">
+                                        <div class="w-4 h-4 rounded-full bg-indigo-600"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm">EMI Starts</p>
+                                        <p class="text-xs text-gray-500">Pay from your salary</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End-to-End Assistance -->
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900">End-to-End Assistance</h3>
+                <p class="text-gray-600 mt-2">We hold your hand through every step.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 relative">
+                    <div class="absolute -top-4 -left-2 text-6xl font-black text-gray-200 opacity-50">01</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2 relative z-10">Expert Checks</h4>
+                    <p class="text-gray-600 text-sm relative z-10">We review your academic & financial documents.</p>
+                    <div class="mt-4 flex justify-end">
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-blue-500"></i>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 relative">
+                    <div class="absolute -top-4 -left-2 text-6xl font-black text-gray-200 opacity-50">02</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2 relative z-10">Application</h4>
+                    <p class="text-gray-600 text-sm relative z-10">We submit your file to Poonawalla Fincorp.</p>
+                    <div class="mt-4 flex justify-end">
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-blue-500"></i>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 relative">
+                    <div class="absolute -top-4 -left-2 text-6xl font-black text-gray-200 opacity-50">03</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2 relative z-10">Coordination</h4>
+                    <p class="text-gray-600 text-sm relative z-10">We handle all lender queries and negotiations.</p>
+                    <div class="mt-4 flex justify-end">
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-blue-500"></i>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 relative">
+                    <div class="absolute -top-4 -left-2 text-6xl font-black text-gray-200 opacity-50">04</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2 relative z-10">Disbursal</h4>
+                    <p class="text-gray-600 text-sm relative z-10">Tracking until the funds hit the account.</p>
+                    <div class="mt-4 flex justify-end">
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-blue-500"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Vision -->
+    <section id="about" class="py-16 md:py-24 bg-gray-900 text-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col lg:flex-row gap-16 items-start">
+                
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold text-white mb-6">About SaralVidya</h2>
+                    <div class="space-y-6 text-gray-300 leading-relaxed">
+                        <p>
+                            The definition of education financing has transformed significantly. It's no longer just about paying fees; it's about investing in potential.
+                        </p>
+                        <p>
+                            SaralVidya is a digital education loan platform designed to bridge the gap between aspiration and reality. We are a student-centric, transparent, and technology-driven organization.
+                        </p>
+                        <p>
+                            As a one-stop destination for undergraduate, postgraduate, domestic, and international education loans, we simplify the complex lending landscape so you can focus on learning.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 grid grid-cols-1 gap-6">
+                    <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-teal-500 transition-colors">
+                        <i data-lucide="target" class="w-8 h-8 text-teal-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Our Vision</h3>
+                        <p class="text-gray-400 text-sm">To provide equal access to education financing across India through technology and unwavering transparency, ensuring no dream is left unfulfilled due to funds.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-blue-500 transition-colors">
+                        <i data-lucide="users" class="w-8 h-8 text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Our Mission</h3>
+                        <p class="text-gray-400 text-sm">To empower students and families via a digital-first, reliable education loan platform that offers end-to-end guidance from application to repayment.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gradient-to-br from-blue-700 to-blue-900 text-white text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Start Your Education Loan Journey Today</h2>
+            <p class="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">Don't let finances hold you back. Get expert guidance and the best rates now.</p>
+            
+            <button onclick="scrollToForm()" class="px-10 py-4 bg-white text-blue-900 rounded-full font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                Apply for Education Loan
+            </button>
+            
+            <div class="mt-8 flex flex-col md:flex-row justify-center gap-6 text-sm text-blue-200">
+                <span class="flex items-center justify-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> Free Consultation</span>
+                <span class="flex items-center justify-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> No Hidden Charges</span>
+                <span class="flex items-center justify-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> Trusted Partners</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-10 text-sm text-gray-600 mb-16 md:mb-0">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between gap-8">
+                
+                <!-- Brand & Address -->
+                <div class="md:w-1/3">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="SaralVidya.png" alt="SaralVidya Logo" class="h-10 w-auto">
+                    </div>
+                    <p class="mb-4 text-gray-500 leading-relaxed">
+                        101 Shyam Anukampa, Ashok Marg,<br />
+                        C-Scheme, Jaipur 302001
+                    </p>
+                    <p class="text-xs text-gray-400">&copy; <span id="year"></span> SaralVidya. All rights reserved.</p>
+                </div>
+                
+                <!-- Links & Contact -->
+                <div class="md:w-2/3 flex flex-col md:flex-row justify-end gap-12">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4">Company</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="hover:text-blue-700 transition-colors">About Us</a></li>
+                            <li><a href="#" class="hover:text-blue-700 transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-blue-700 transition-colors">Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4">Contact</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-blue-600"></i> support@saralvidya.com</li>
+                            <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-blue-600"></i> +91 98765 4XXXX</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 z-50 flex gap-3 shadow-[0_-5px_10px_rgba(0,0,0,0.1)]">
+        <a href="tel:+919876543210" class="flex-1 py-3 border border-blue-900 text-blue-900 rounded-lg font-bold flex items-center justify-center gap-2">
+            <i data-lucide="phone" class="w-4 h-4"></i> Call
+        </a>
+        <button onclick="scrollToForm()" class="flex-[2] py-3 bg-blue-900 text-white rounded-lg font-bold text-center">
+            Apply Now
+        </button>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Update Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass-nav', 'py-3');
+                navbar.classList.remove('bg-transparent', 'py-5');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-3');
+                navbar.classList.add('bg-transparent', 'py-5');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Smooth Scroll to Form
+        function scrollToForm() {
+            document.getElementById('lead-form-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Form Handling
+        const form = document.getElementById('loan-form');
+        const formContent = document.getElementById('form-content');
+        const successMessage = document.getElementById('success-message');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate API call
+            formContent.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            successMessage.classList.add('animate-in', 'fade-in', 'zoom-in');
+        });
+
+        function resetForm() {
+            form.reset();
+            successMessage.classList.add('hidden');
+            formContent.classList.remove('hidden');
+            formContent.classList.add('animate-in', 'fade-in');
+        }
+    </script>
+</body>
+</html>
