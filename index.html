@@ -15,49 +15,60 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; }
+    
+    /* Mobile Menu Animation */
+    #mobile-menu {
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transform-origin: top;
+    }
+    
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Navbar Scroll Logic */
+    #navbar {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .glass-nav {
+        /* !important forces this to override Tailwind */
+        background-color: rgba(255, 255, 255, 0.95) !important; 
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         
-        /* Smooth Navbar Transition */
-        #navbar {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .glass-nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px); /* Increased blur for smoother look */
-            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05); /* Softer shadow */
-        }
-        
-        /* Mobile Menu Animation */
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            transform-origin: top;
-        }
-        
-        /* Hide scrollbar for smooth look */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        /* Utility to hide scrollbar but allow scrolling */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-    </style>
+        /* INCREASE THESE NUMBERS to make the white bar taller */
+        padding-top: 16px !important; 
+        padding-bottom: 16px !important;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .hide-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+</style>
+
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 py-5 bg-transparent">
+    <nav id="navbar" class="fixed w-full z-50 py-5 bg-transparent transition-all duration-300">
+
         <div class="container mx-auto px-4 md:px-6 flex justify-between items-center relative z-50">
             <!-- Logo -->
             <div class="flex items-center gap-2">
-                <img src="SaralVidya.png" alt="SaralVidya Logo" class="h-10 md:h-12 w-auto transition-all duration-300" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-2xl font-bold text-blue-900\'>SaralVidya</span>'">
+                <img src="SaralVidya (1080 x 1080 px) (2).png" alt="SaralVidya Logo" class="h-10 md:h-12 w-auto transition-all duration-300" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-2xl font-bold text-blue-900\'>SaralVidya</span>'">
             </div>
 
             <!-- Desktop Nav -->
@@ -66,13 +77,13 @@
                 <a href="#features" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">Features</a>
                 <a href="#process" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">Process</a>
                 <a href="#about" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">About</a>
-                <button onclick="scrollToForm()" class="bg-blue-900 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-900/20 active:scale-95">
+                <button onclick="openLoanModal()" class="bg-blue-900 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-900/20 active:scale-95">
                     Apply Now
                 </button>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-700 p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none">
+            <button id="mobile-menu-btn" onclick="toggleMenu()" class="md:hidden text-gray-700 p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none">
                 <i data-lucide="menu" class="w-7 h-7"></i>
             </button>
         </div>
@@ -84,7 +95,7 @@
             <a href="#process" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">Process</a>
             <a href="#about" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">About</a>
             <div class="mt-2 pt-2 border-t border-gray-100">
-                <button onclick="scrollToForm(); toggleMenu();" class="w-full bg-blue-900 text-white py-3.5 rounded-xl font-bold text-center shadow-md active:scale-95 transition-transform">
+                <button onclick="openLoanModal(); toggleMenu();" class="w-full bg-blue-900 text-white py-3.5 rounded-xl font-bold text-center shadow-md active:scale-95 transition-transform">
                     Apply Now
                 </button>
             </div>
@@ -116,7 +127,7 @@
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <button onclick="scrollToForm()" class="px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-xl font-bold text-lg shadow-xl shadow-blue-900/20 hover:scale-105 active:scale-95 transition-all">
+                        <button onclick="openLoanModal()" class="px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-xl font-bold text-lg shadow-xl shadow-blue-900/20 hover:scale-105 active:scale-95 transition-all">
                             Check Eligibility
                         </button>
                     </div>
@@ -130,89 +141,19 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Hero Illustration -->
+                <div class="lg:w-1/2 w-full relative">
+                    <img 
+                        src="Gemini_Generated_Image_lv1v3elv1v3elv1v-removebg-preview.png" 
+                        alt="Education Loan Illustration"
+                        class="w-full h-auto rounded-2xl lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:max-w-[700px]"
+                    />
+                </div>
 
-                <!-- Lead Form -->
-                <div class="lg:w-1/2 w-full max-w-md" id="lead-form-container">
-                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl border border-gray-100 relative overflow-hidden transform transition-transform hover:-translate-y-1 duration-300">
-                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-teal-500"></div>
-                        
-                        <!-- Form Content -->
-                        <div id="form-content">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Get Free Loan Assistance</h3>
-                            <p class="text-gray-500 text-sm mb-6">Fill the details to get a call back from our expert.</p>
-                            
-                            <form id="loan-form" class="space-y-4">
-                                <div>
-                                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1 ml-1">Full Name</label>
-                                    <!-- Added id="fullName" -->
-                                    <input id="fullName" required type="text" placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
-                                </div>
-                                
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1 ml-1">Mobile</label>
-                                        <!-- Added id="mobileNumber" -->
-                                        <input id="mobileNumber" required type="tel" pattern="[0-9]{10}" placeholder="10-digit number" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
-                                    </div>
-                                    <div>
-                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1 ml-1">Email</label>
-                                        <!-- Added id="email" -->
-                                        <input id="email" required type="email" placeholder="name@email.com" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
-                                    </div>
-                                </div>
+                
 
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1 ml-1">Course Location</label>
-                                        <div class="relative">
-                                            <!-- Added id="country" -->
-                                            <select id="country" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none appearance-none">
-                                                <option>Study in India</option>
-                                                <option>USA</option>
-                                                <option>UK</option>
-                                                <option>Canada</option>
-                                                <option>Australia</option>
-                                                <option>Germany</option>
-                                                <option>Other</option>
-                                            </select>
-                                            <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1 ml-1">Loan Amount</label>
-                                        <div class="relative">
-                                            <!-- Added id="loanAmount" -->
-                                            <select id="loanAmount" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none appearance-none">
-                                                <option>₹10L - ₹20L</option>
-                                                <option>₹20L - ₹40L</option>
-                                                <option>₹40L - ₹60L</option>
-                                                <option>Above ₹60L</option>
-                                            </select>
-                                            <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-xl hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl active:scale-95 flex items-center justify-center gap-2 group cursor-pointer mt-2">
-                                    Get Free Loan Assistance 
-                                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                                </button>
-
-                                <p class="text-xs text-center text-gray-400 mt-2">
-                                    By submitting, you agree to our Terms & Privacy Policy.
-                                </p>
-                            </form>
-                        </div>
-
-                        <!-- Success Message (Hidden by default) -->
-                        <div id="success-message" class="hidden h-64 flex flex-col items-center justify-center text-center">
-                            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 animate-bounce">
-                                <i data-lucide="check-circle" class="w-8 h-8"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">Request Submitted!</h3>
-                            <p class="text-gray-500 mt-2">Our expert counsellor will call you shortly.</p>
-                            <button onclick="resetForm()" class="mt-4 text-blue-600 text-sm font-semibold underline hover:text-blue-800">Submit another</button>
-                        </div>
+                    
 
                     </div>
                 </div>
@@ -687,7 +628,7 @@
             <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Start Your Education Loan Journey Today</h2>
             <p class="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">Don't let finances hold you back. Get expert guidance and the best rates now.</p>
             
-            <button onclick="scrollToForm()" class="px-10 py-4 bg-white text-blue-900 rounded-full font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all">
+            <button onclick="openLoanModal()" class="px-10 py-4 bg-white text-blue-900 rounded-full font-bold text-lg shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all">
                 Apply for Education Loan
             </button>
             
@@ -699,236 +640,351 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 py-10 text-sm text-gray-600">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="flex flex-col md:flex-row justify-between gap-8">
-                
-                <!-- Brand & Address -->
-                <div class="md:w-1/3">
-                    <div class="flex items-center gap-2 mb-4">
-                        <img src="SaralVidya.png" alt="SaralVidya Logo" class="h-10 w-auto" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-2xl font-bold text-blue-900\'>SaralVidya</span>'">
-                    </div>
-                    <p class="mb-4 text-gray-500 leading-relaxed">
-                        101 Shyam Anukampa, Ashok Marg,<br />
-                        C-Scheme, Jaipur 302001
-                    </p>
-                    <p class="text-xs text-gray-400">&copy; <span id="year"></span> SaralVidya. All rights reserved.</p>
-                </div>
-                
-                <!-- Links & Contact -->
-                <div class="md:w-2/3 flex flex-col md:flex-row justify-end gap-12">
-                    <div>
-                        <h4 class="font-bold text-gray-900 mb-4">Company</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#about" class="hover:text-blue-700 transition-colors">About Us</a></li>
-                            <li><a href="#" class="hover:text-blue-700 transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" class="hover:text-blue-700 transition-colors">Terms of Service</a></li>
-                        </ul>
-                    </div>
+    <footer class="bg-[#0B1221] text-slate-400 font-sans relative overflow-hidden text-sm">
+    <!-- Top Gradient Line -->
+    <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
 
-                    <div>
-                        <h4 class="font-bold text-gray-900 mb-4">Contact</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-blue-600"></i> support@saralvidya.com</li>
-                            <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-blue-600"></i> +91 98765 XXXXX</li>
-                        </ul>
-                    </div>
+    <div class="max-w-7xl mx-auto px-6 py-5">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            
+            <!-- Column 1: Brand & Compact Address (Spans 5 columns) -->
+            <div class="md:col-span-5 space-y-3">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <img src="SaralVidya (1080 x 1080 px) (2).png" alt="SaralVidya" class="h-7 w-auto brightness-200 contrast-200" 
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-lg font-bold text-white tracking-tight\'>SaralVidya</span>'">
                 </div>
 
+                <!-- Compact Address Block -->
+                <div class="text-xs leading-relaxed text-slate-400">
+                    <p>101 Shyam Anukampa, Ashok Marg, C-Scheme, Jaipur – 302001</p>
+                </div>
+
+                <!-- Mini Trust Badges -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="shield-check" class="w-2.5 h-2.5 mr-1"></i> Secure
+                    </span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="landmark" class="w-2.5 h-2.5 mr-1"></i> Regulated
+                    </span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="landmark" class="w-2.5 h-2.5 mr-1"></i> Digital Process
+                    </span>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links (Spans 3 columns) -->
+            <div class="md:col-span-3">
+                <h4 class="text-white font-medium text-xs uppercase tracking-wider mb-2">Quick Links</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Apply Now</a></li>
+                    <li><a href="#about" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+                    <li><a href="/privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+                    <li><a href="/Terms-of-Services.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact (Spans 4 columns) -->
+            <div class="md:col-span-4">
+                <h4 class="text-white font-medium text-xs uppercase tracking-wider mb-2">Contact</h4>
+                <ul class="space-y-2 text-xs">
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="mail" class="w-3.5 h-3.5 text-blue-500"></i>
+                        <a href="mailto:support@saralvidya.com" class="hover:text-white transition-colors">support@saralvidya.com</a>
+                    </li>
+                    
+                </ul>
             </div>
         </div>
-    </footer>
 
-    <!-- Application Logic -->
+        <!-- Ultra Compact Bottom Bar -->
+        <div class="mt-4 pt-3 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-500 gap-2">
+            <p>&copy; <span id="footer-year">2026</span> SaralVidya.</p>
+            <div class="flex items-center gap-1 opacity-80">
+                <span>Built for students</span>
+                <i data-lucide="heart" class="w-3 h-3 text-red-500/80 fill-red-500/20"></i>
+            </div>
+        </div>
+    </div>
+
     <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+        if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+    </script>
+</footer>
 
+    
+    <!-- Loan Form Modal -->
+<div id="loanModal"
+     class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center px-4">
+
+    <!-- Close Button -->
+    <button onclick="closeLoanModal()"
+        class="absolute top-6 right-6 text-white text-3xl hover:opacity-70 z-50">
+        &times;
+    </button>
+
+    <!-- FORM CARD ONLY -->
+    <div class="relative w-full max-w-lg mx-auto">
+    
+    <div class="absolute -top-10 -left-10 w-32 h-32 bg-blue-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+    <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-teal-400 rounded-full blur-3xl opacity-20 animate-pulse delay-700"></div>
+
+    <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] border border-white/50 overflow-hidden transition-all duration-300">
         
+        <div class="h-1.5 w-full bg-gradient-to-r from-blue-800 via-blue-600 to-teal-400"></div>
 
-        // Initialize Icons
+        <div class="p-8 md:p-10">
+            
+            <div id="form-container" class="transition-all duration-500 ease-in-out">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Get Your Loan Estimate</h2>
+                    <p class="text-gray-500 mt-2 text-sm">Fill in your details below. Our experts will contact you within 24 hours.</p>
+                </div>
+
+                <form id="loan-form" onsubmit="submitForm(event)" class="space-y-5">
+                    
+                    <div class="group">
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Full Name</label>
+                        <div class="relative">
+                            <i data-lucide="user" class="absolute left-4 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors"></i>
+                            <input type="text" name="fullName" required placeholder="John Doe"
+                                class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all duration-200 placeholder-gray-400 font-medium text-gray-800" />
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Phone Number</label>
+                        <div class="relative">
+                            <i data-lucide="smartphone" class="absolute left-4 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors"></i>
+                            <input type="tel" name="phone" required placeholder="98765 43210" pattern="[0-9]{10}"
+                                class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all duration-200 placeholder-gray-400 font-medium text-gray-800" />
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Email Address</label>
+                        <div class="relative">
+                            <i data-lucide="mail" class="absolute left-4 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors"></i>
+                            <input type="email" name="email" required placeholder="john@example.com"
+                                class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all duration-200 placeholder-gray-400 font-medium text-gray-800" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="group">
+                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Destination</label>
+                            <div class="relative">
+                                <i data-lucide="globe" class="absolute left-4 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors"></i>
+                                <select name="courseLocation" required
+                                    class="w-full pl-11 pr-8 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all duration-200 font-medium text-gray-800 appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="USA">USA</option>
+                                    <option value="UK">UK</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="India">India</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-3 top-3.5 h-4 w-4 text-gray-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <div class="group">
+                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Loan Amount (₹)</label>
+                            <div class="relative">
+                                <i data-lucide="indian-rupee" class="absolute left-4 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors"></i>
+                                <input type="number" name="loanAmount" required placeholder="1500000" min="10000"
+                                    class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all duration-200 placeholder-gray-400 font-medium text-gray-800" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full group relative flex justify-center py-3.5 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900 transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98]">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-blue-300 group-hover:text-white transition-colors"></i>
+                        </span>
+                        Check Eligibility Now
+                    </button>
+                    
+                    <p class="text-center text-xs text-gray-400 mt-4">
+                        <i data-lucide="lock" class="inline w-3 h-3 mr-1"></i> Your data is secure and encrypted.
+                    </p>
+                </form>
+            </div>
+
+            <div id="success-message" class="hidden flex flex-col items-center justify-center py-6 text-center animate-in fade-in zoom-in duration-500">
+                <div class="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mb-6 shadow-inner relative">
+                    <div class="absolute inset-0 bg-green-100 rounded-full animate-ping opacity-25"></div>
+                    <i data-lucide="check" class="w-12 h-12 text-green-600 stroke-[3]"></i>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Application Received!</h3>
+                <p class="text-gray-600 max-w-xs mx-auto mb-8 leading-relaxed">
+                    Thank you, <span id="success-name" class="font-bold text-blue-900"></span>. <br>
+                    Our team has received your request and will contact you shortly.
+                </p>
+                
+                <button onclick="location.reload()" 
+                    class="px-8 py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
+                    Submit Another Response
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    // --- 1. FIXED: Mobile Menu Function ---
+    // This makes the 3-line button work again
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+        } else {
+            menu.classList.add('hidden');
+        }
+    }
+
+    // --- 2. Navbar Scroll Logic ---
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbar = document.getElementById('navbar');
+
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    // SCROLLED DOWN: White background + Taller padding
+                    navbar.classList.remove('bg-transparent', 'py-5');
+                    navbar.classList.add('glass-nav');
+                } else {
+                    // TOP OF PAGE: Transparent
+                    navbar.classList.add('bg-transparent', 'py-5');
+                    navbar.classList.remove('glass-nav');
+                }
+            });
+        }
+    });
+
+</script>
+
+<!--Form Script-->
+<script>
+function openLoanModal() {
+    document.getElementById('loanModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLoanModal() {
+    document.getElementById('loanModal').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+</script>
+<!--CRM FORM CONNECTION SCRIPT-->
+
+<script>
+const API_BASE = "http://127.0.0.1:3000";
+
+async function submitForm(e) {
+    e.preventDefault();
+
+    const form = document.getElementById("loan-form");
+    const formData = new FormData(form);
+
+    // ✅ FIX: The names on the LEFT must match your Database (Lead.js)
+    const payload = {
+        fullName: formData.get("fullName")?.trim(),
+        
+        // 👇 CHANGE THIS: 'phone' -> 'mobileNumber'
+        mobileNumber: formData.get("phone")?.trim(),
+        
+        email: formData.get("email")?.trim(),
+        
+        // 👇 CHANGE THIS: 'courseLocation' -> 'country'
+        country: formData.get("courseLocation")?.trim(),
+        
+        loanAmount: formData.get("loanAmount")
+    };
+
+    console.log("🚀 Sending Corrected Payload:", payload);
+
+    try {
+        const res = await fetch(`${API_BASE}/api/leads/public`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) {
+            throw new Error(result.message || "Submission failed");
+        }
+
+        // ... inside try block after if (!res.ok) ...
+
+        // ✅ SUCCESS UI
+        const name = payload.fullName || "Student"; // Get name for personalization
+        document.getElementById("success-name").innerText = name; // Update span
+
+        // Smooth transition: Hide form, Show success
+        document.getElementById("form-container").classList.add("hidden");
+        document.getElementById("success-message").classList.remove("hidden");
+        document.getElementById("success-message").classList.add("flex"); // Ensure flex display
+
+        // Re-initialize icons for the new view (if needed)
         lucide.createIcons();
 
-        // Update Year
-        document.getElementById('year').textContent = new Date().getFullYear();
+    } catch (err) {
+        // ... error handling
+        console.error("❌ Submission Error:", err);
+        alert("Error: " + err.message);
+    }
+}
+</script>
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        const logo = navbar.querySelector('img');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                navbar.classList.add('glass-nav', 'py-3', 'shadow-sm');
-                navbar.classList.remove('bg-transparent', 'py-5');
-            } else {
-                navbar.classList.remove('glass-nav', 'py-3', 'shadow-sm');
-                navbar.classList.add('bg-transparent', 'py-5');
-            }
+
+
+    <script>
+function resetForm() {
+  document.getElementById("success-message").classList.add("hidden");
+  document.getElementById("loan-form").classList.remove("hidden");
+  document.getElementById("loan-form").reset();
+}
+
+// ---------------------------------------------------------
+// 💬 TESTIMONIALS SLIDER LOGIC
+// ---------------------------------------------------------
+function scrollTestimonials(direction) {
+    // 1. Target the specific container ID from your code
+    const container = document.getElementById('testimonials-scroll');
+
+    // Safety check: ensure container exists
+    if (!container) {
+        console.error("❌ Error: Could not find element with id='testimonials-scroll'");
+        return;
+    }
+
+    // 2. Define how far to scroll (Card width + Gap)
+    // Assuming cards are around 350px-400px wide
+    const scrollAmount = 400; 
+
+    // 3. Execute Scroll
+    if (direction === 'left') {
+        container.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
         });
-
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = menuBtn.querySelector('i');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                // Small delay to allow display:block to apply before opacity transition
-                setTimeout(() => {
-                    mobileMenu.classList.remove('opacity-0', '-translate-y-2');
-                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
-                }, 10);
-                menuIcon.setAttribute('data-lucide', 'x');
-                navbar.classList.add('bg-white'); // Solid background when menu open
-            } else {
-                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
-                mobileMenu.classList.add('opacity-0', '-translate-y-2');
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 300); // Wait for transition
-                menuIcon.setAttribute('data-lucide', 'menu');
-                if (window.scrollY <= 10) navbar.classList.remove('bg-white');
-            }
-            lucide.createIcons();
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-        
-        // Close menu when clicking a link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    toggleMenu();
-                }
-            });
+    } else {
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
         });
+    }
+}
 
-        // Smooth Scroll to Form
-        function scrollToForm() {
-            const formContainer = document.getElementById('lead-form-container');
-            const offset = 100; // Offset for fixed header
-            const elementPosition = formContainer.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-        
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        }
-
-        // Testimonials Scroll Logic
-        function scrollTestimonials(direction) {
-            const container = document.getElementById('testimonials-scroll');
-            // Calculate scroll amount based on card width + gap
-            // Mobile: 85vw approx, Desktop: 380px + 24px gap = ~404px
-            const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : 400;
-            
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
-
-        // ✅ UPDATED CODE START
-        const form = document.getElementById('loan-form');
-        const formContent = document.getElementById('form-content');
-        const successMessage = document.getElementById('success-message');
-
-        if (form) {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerHTML;
-
-                try {
-                    // 1. Disable button & show loading state
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = `Submitting... <i data-lucide="loader" class="w-4 h-4 animate-spin inline ml-1"></i>`;
-                    if (window.lucide) lucide.createIcons(); // Re-init icons for the loader
-
-                    // 2. Safe Value Extraction Helper
-                    const getValue = (id) => {
-                        const el = document.getElementById(id);
-                        return el ? el.value.trim() : "";
-                    };
-
-                    // 3. Construct Payload (Exact Schema)
-                    const payload = {
-                        fullName: getValue('fullName'),
-                        mobileNumber: getValue('mobileNumber'),
-                        email: getValue('email'),
-
-                        // REQUIRED FIELDS (backend expects these)
-                        courseName: "Education Loan",
-                        instituteName: "Not Provided",
-
-                        country: getValue('country'),
-
-                        // Convert string range → number
-                        loanAmount: parseLoanAmount(getValue('loanAmount'))
-                    };
-
-                    function parseLoanAmount(value) {
-                        if (value.includes('10L')) return 1500000;
-                        if (value.includes('20L')) return 3000000;
-                        if (value.includes('40L')) return 5000000;
-                        if (value.includes('Above')) return 8000000;
-                        return 0;
-            }
-
-
-                    // 4. Send Request
-                    const response = await fetch('http://localhost:3000/api/leads/public', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(payload)
-                    });
-
-                    // 5. Handle Response
-                    if (!response.ok) {
-                        // Try to get error message from server
-                        const errorData = await response.json().catch(() => ({}));
-                        throw new Error(errorData.message || `Server Error: ${response.status}`);
-                    }
-
-                    // 6. Success UI
-                    formContent.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
-                    successMessage.classList.add('animate-in', 'fade-in', 'zoom-in');
-                    
-                    // Optional: Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                } catch (error) {
-                    console.error('Lead Submission Error:', error);
-                    alert(`Submission failed: ${error.message}. Please check your connection and try again.`);
-                } finally {
-                    // 7. Reset Button State (only if not successful, or just always reset text if needed, 
-                    // but if successful we hide the form so it doesn't matter)
-                    if (!successMessage.classList.contains('hidden')) {
-                        // Form is hidden, no need to reset button
-                    } else {
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnText;
-                    }
-                }
-            });
-        }
-        // ✅ UPDATED CODE END
-
-        function resetForm() {
-            form.reset();
-            successMessage.classList.add('hidden');
-            formContent.classList.remove('hidden');
-            formContent.classList.add('animate-in', 'fade-in');
-        }
-    </script>
+</script>
 </body>
 </html>

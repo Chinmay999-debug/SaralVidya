@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>terms-of-services | Saral Vidya</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+     /* Smooth Navbar Transition */
+        #navbar {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding-top: 24px !important;
+            padding-bottom: 24px !important;
+        }
+        
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform-origin: top;
+        }
+        
+        /* Hide scrollbar for smooth look */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Utility to hide scrollbar but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+        }
+
+        .animate-scaleIn {
+        animation: scaleIn 0.25s ease-out;
+        }
+
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+<!-- ✅ NAVBAR (reuse from index.html exactly) -->
+ <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 py-5 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center relative z-50">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <img src="SaralVidya (1080 x 1080 px) (2).png" alt="SaralVidya Logo" class="h-10 md:h-12 w-auto transition-all duration-300" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-2xl font-bold text-blue-900\'>SaralVidya</span>'">
+            </div>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html#benefits" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">Why Us</a>
+                <a href="index.html#features" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">Features</a>
+                <a href="index.html#process" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">Process</a>
+                <a href="index.html#about" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">About</a>
+                <a href="index.html" class="bg-blue-900 text-white px-5 py-2.5 rounded-full font-bold hover:bg-blue-800 transition shadow-lg shadow-blue-900/20 inline-block">
+                    Apply Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" onclick="toggleMenu()" class="md:hidden text-gray-700 p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 p-4 flex flex-col gap-2 z-40">
+            <a href="index.html#benefits" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">Why Us</a>
+            <a href="index.html#features" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">Features</a>
+            <a href="index.html#process" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">Process</a>
+            <a href="index.html#about" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">About</a>
+            <div class="mt-2 pt-2 border-t border-gray-100">
+                <a href="index.html" class="bg-blue-900 text-white px-5 py-2.5 rounded-full font-bold hover:bg-blue-800 transition shadow-lg shadow-blue-900/20 inline-block">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-12 bg-gradient-to-b from-blue-50 to-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      Terms of Services
+    </h1>
+    <p class="mt-4 text-gray-500 text-sm">
+      Last updated: January 2026
+    </p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="pb-24">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-10 space-y-6 leading-relaxed">
+        <h3>
+            Welcome to www.saralvidya.in website (the "Site") operated by <b>Saral Vidya</b>, a brand and initiative 
+            of<b> Real Money Advisory Solution Pvt. Ltd</b> (“Saral Vidya”), a company incorporated under the 
+            provisions of the Companies Act, 1956 and having its registered office at 101, First Floor, Shyam 
+            Anukampa Tower, Ashok Marg, C-scheme, Jaipur-302001. Saral Vidya provides its services to you 
+            subject to the following conditions. Before you may use the Site, you must read and accept all of the 
+            terms and conditions in, and linked to, this Terms of Use and the linked Privacy Policy.
+            We strongly recommend that, as you read this Terms and Conditions, you also access and read the 
+            linked information, since it is incorporated into and hereby made part of this Terms and Conditions. 
+            This Terms and Conditions is effective upon acceptance. Use of any functionality of the Site 
+            constitutes acceptance of this Terms and Conditions. If this Terms and Conditions conflicts with any 
+            other documents, the Terms and Conditions will control for the purposes of usage of the Site. If you 
+            do not agree to be bound by this Terms and Conditions and the Privacy Policy, you may not use the 
+            Site in any way. Be sure to return to this page periodically to review the most current version of the 
+            Terms and Conditions. We reserve the right, at any time, at our sole discretion, to change or 
+            otherwise modify the TERMS AND CONDITIONS without prior notice, and your continued access 
+            or use of this Site signifies your acceptance of the updated or modified TERMS AND 
+            CONDITIONS.
+        </h3>
+
+      <h2 class="text-xl font-bold text-gray-900">Description and acceptance of service</h2>
+      <p>
+       In the Site, <b>Saral Vidya</b>provides users with assistance, facilitation, and advisory services related to 
+        <b>education loans</b>, including customized loan eligibility assessment and support in loan application 
+        and documentation. Saral Vidya acts as a facilitation platform and does not itself provide or 
+        sanction loans. Education loans are offered by banks, NBFCs, or financial institutions.
+      </p>
+      <p>
+        You are responsible for obtaining access to the Site, and that access may involve third-party fees 
+        (such as Internet service provider or airtime charges). In addition, you must provide and are 
+        responsible for all equipment necessary to access the Site.
+      </p>
+
+      <p>
+        By making use of this Site, and furnishing your personal/contact details, you hereby agree that you 
+        are interested in availing the services that you have selected. You hereby agree that Saral Vidya may 
+        contact you either electronically or through phone to understand your education loan requirements 
+        and to facilitate services. You also agree that Saral Vidya reserves the right to make your details 
+        available to its lending partners and you may be contacted by such partners for information and 
+        loan-related communication through email, telephone, and/or SMS. You agree to receive service
+        related communications from Saral Vidya.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">License and Site Access</h2>
+      <p>
+        Saral Vidya grants you a limited license to access and make personal use of the Site and the Service. 
+        This license does not include any downloading or copying of any kind of information for the benefit 
+        of another individual, vendor, or any other third party; caching, unauthorized hypertext links to the 
+        Site, or the framing of any Content available through the Site; uploading, posting, or transmitting 
+        any content that you do not have a right to make available; uploading, posting, or transmitting any 
+        material that contains software viruses or any other computer code, files, or programs designed to 
+        interrupt, destroy, or limit the functionality of any computer software or hardware or 
+        telecommunications equipment; any action that imposes or may impose (in Saral Vidya’s sole 
+        discretion) an unreasonable or disproportionately large load on Saral Vidya’s infrastructure; or any 
+        use of data mining, robots, or similar data gathering and extraction tools.
+      </p>
+
+      <p>
+        You may not bypass any measures used by Saral Vidya to prevent or restrict access to the Site. Any 
+        unauthorized use by you shall terminate the permission or license granted to you by Saral Vidya.
+      </p>
+
+      <p>
+        By using the Site you agree not to:
+            <p>(i) use this Site or its contents for any commercial purpose.</p>
+            <p>(ii) make any speculative, false, or fraudulent transaction.</p>
+            <p>(iii) access, monitor, or copy any content or information of this Site using any automated means 
+                        without express written permission.</p>
+            <p>(iv) violate any security or access restrictions.</p>
+            <p>(v) take any action that imposes an unreasonable load on infrastructure.</p>
+            <p>(vi) deep-link to any portion of this Site without written permission.</p>
+            <p>(vii) frame or mirror any part of this Site without authorization.</p>
+        </p>
+
+      <h2 class="text-xl font-bold text-gray-900">Your Account</h2>
+        <P>
+        In consideration of your use of the Site, you represent that you are of legal age to form a binding 
+        contract and are not barred from receiving services under the laws of India. You also agree to 
+        provide true, accurate, current, and complete information.
+        </P>
+
+        <p>
+        If any information provided is untrue, inaccurate, or incomplete, Saral Vidya reserves the right to 
+        refuse any current or future use of the Site.
+        </p>
+
+        <p>
+        Saral Vidya retains the right at its sole discretion to deny access to the Site or Services at any time 
+        for violation of these T&C or the Privacy Policy.
+        </p>
+
+    <h2 class="text-xl font-bold text-gray-900">Submitted Content</h2>
+        <P>
+        Saral Vidya does not claim ownership of any materials you submit through the Site. However, you 
+        grant Saral Vidya a perpetual, irrevocable, worldwide, royalty-free, non-exclusive license to use, 
+        reproduce, distribute, modify, and display such materials for service-related purposes.
+        <br>
+        <br>
+        You agree that you are fully responsible for the content you submit and shall not post unlawful, 
+        defamatory, obscene, misleading, commercial, or infringing material.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">Disclaimer of Online Availability, Impressions, and Click-Throughs</h2>
+        <P>
+       There are no guarantees regarding online availability, impressions, or click-throughs of 
+        www.saralvidya.com. Saral Vidya reserves the right to accept or reject any advertising or 
+        partnership at its discretion.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">Local Laws</h2>
+        <P>
+       Saral Vidya controls and operates this Website from Jaipur, India. Use from other locations is at the 
+        user’s own risk and subject to compliance with local laws. All disputes shall be subject to the 
+        exclusive jurisdiction of courts at Jaipur.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">Limitation of Liability</h2>
+        <P>
+        Saral Vidya and its affiliates shall not be liable for any direct, indirect, incidental, consequential, or 
+        exemplary damages arising from the use of the Site or Services.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">Indemnity</h2>
+        <P>
+        You agree to indemnify and hold Saral Vidya harmless from any claims arising out of your use of 
+        the Site or violation of these T&C.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">Electronic Communication</h2>
+        <P>
+        By using the Site, you consent to receive electronic communications from Saral Vidya, which 
+        satisfy legal requirements of written communication.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">Site-Provided Message Postings</h2>
+        <P>
+        Saral Vidya is under no obligation to monitor postings and assumes no liability for user-generated 
+        content. Prohibited content includes unlawful, abusive, misleading, promotional, or impersonating 
+        messages.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">Links</h2>
+        <P>
+        Saral Vidya is not responsible for third-party websites linked from the Site and assumes no liability 
+        for external content.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">Access to Password Protected/Secure Areas</h2>
+        <P>
+        Unauthorized access to secure areas may result in legal action under applicable Indian laws.
+        </P>
+
+      <h2 class="text-xl font-bold text-gray-900">Modification and Notification of Changes</h2>
+      <p>
+        Saral Vidya reserves the right to modify this T&C and related policies at any time.
+      </p>
+    
+    <h2 class="text-xl font-bold text-gray-900">Trademarks</h2>
+        <P>
+        All trademarks, logos, and content displayed on the Site are the property of Saral Vidya or its 
+        licensors and are protected by law.
+        </P>
+
+      <h2 class="text-xl font-bold text-gray-900">General</h2>
+      <p>
+        If any provision is held unenforceable, the remainder shall remain valid. These T&C are governed 
+        by the laws of India. Courts at Jaipur shall have exclusive jurisdiction. This document constitutes 
+        the entire agreement between you and Saral Vidya
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#0B1221] text-slate-400 font-sans relative overflow-hidden text-sm">
+    <!-- Top Gradient Line -->
+    <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-5">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            
+            <!-- Column 1: Brand & Compact Address (Spans 5 columns) -->
+            <div class="md:col-span-5 space-y-3">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <img src="SaralVidya.png" alt="SaralVidya" class="h-7 w-auto brightness-200 contrast-200" 
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-lg font-bold text-white tracking-tight\'>SaralVidya</span>'">
+                </div>
+
+                <!-- Compact Address Block -->
+                <div class="text-xs leading-relaxed text-slate-400">
+                    <p>101 Shyam Anukampa, Ashok Marg, C-Scheme, Jaipur – 302001</p>
+                </div>
+
+                <!-- Mini Trust Badges -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="shield-check" class="w-2.5 h-2.5 mr-1"></i> Secure
+                    </span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="landmark" class="w-2.5 h-2.5 mr-1"></i> Regulated
+                    </span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="landmark" class="w-2.5 h-2.5 mr-1"></i> Digital Process
+                    </span>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links (Spans 3 columns) -->
+            <div class="md:col-span-3">
+                <h4 class="text-white font-medium text-xs uppercase tracking-wider mb-2">QUICK LINKS</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Apply Now</a></li>
+                    <li><a href="index.html#about" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+                    <li><a href="/privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+                    <li><a href="/Terms-of-Services.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact (Spans 4 columns) -->
+            <div class="md:col-span-4">
+                <h4 class="text-white font-medium text-xs uppercase tracking-wider mb-2">Contact</h4>
+                <ul class="space-y-2 text-xs">
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="mail" class="w-3.5 h-3.5 text-blue-500"></i>
+                        <a href="mailto:support@saralvidya.com" class="hover:text-white transition-colors">support@saralvidya.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Ultra Compact Bottom Bar -->
+        <div class="mt-4 pt-3 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-500 gap-2">
+            <p>&copy; <span id="footer-year">2026</span> SaralVidya.</p>
+            <div class="flex items-center gap-1 opacity-80">
+                <span>Built for students</span>
+                <i data-lucide="heart" class="w-3 h-3 text-red-500/80 fill-red-500/20"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+        if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+    </script>
+</footer>
+
+
+<script>
+    const navbar = document.getElementById('navbar');
+
+// Always solid navbar for legal pages
+if (document.body.classList.contains('legal-page')) {
+  navbar.classList.add(
+    'glass-nav',
+    'bg-white',
+    'py-3',
+    'shadow-sm'
+  );
+} else {
+  // Homepage behavior
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add('glass-nav', 'bg-white', 'py-3', 'shadow-sm');
+      navbar.classList.remove('bg-transparent', 'py-5');
+    } else {
+      navbar.classList.remove('glass-nav', 'bg-white', 'py-3', 'shadow-sm');
+      navbar.classList.add('bg-transparent', 'py-5');
+    }
+  });
+}
+
+</script>
+<script>
+  lucide.createIcons();
+</script>
+
+<script>
+    // --- 1. Mobile Menu Functionality ---
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+        } else {
+            menu.classList.add('hidden');
+        }
+    }
+
+    // --- 2. Navbar Scroll Logic ---
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbar = document.getElementById('navbar');
+
+        // Initialize Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.classList.remove('bg-transparent', 'py-5');
+                    navbar.classList.add('glass-nav');
+                } else {
+                    navbar.classList.add('bg-transparent', 'py-5');
+                    navbar.classList.remove('glass-nav');
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

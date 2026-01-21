@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Saral Vidya</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+     /* Smooth Navbar Transition */
+        #navbar {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding-top: 24px !important;
+            padding-bottom: 24px !important;
+        }
+        
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform-origin: top;
+        }
+        
+        /* Hide scrollbar for smooth look */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Utility to hide scrollbar but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+        }
+
+        .animate-scaleIn {
+        animation: scaleIn 0.25s ease-out;
+        }
+
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+<!-- ✅ NAVBAR (reuse from index.html exactly) -->
+ <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 py-5 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center relative z-50">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <img src="SaralVidya (1080 x 1080 px) (2).png" alt="SaralVidya Logo" class="h-10 md:h-12 w-auto transition-all duration-300" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-2xl font-bold text-blue-900\'>SaralVidya</span>'">
+            </div>
+
+             <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html#benefits" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">Why Us</a>
+                <a href="index.html#features" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">Features</a>
+                <a href="index.html#process" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">Process</a>
+                <a href="index.html#about" class="text-gray-600 hover:text-blue-700 font-medium transition-colors hover:bg-gray-50 px-3 py-2 rounded-lg">About</a>
+                <a href="index.html" class="bg-blue-900 text-white px-5 py-2.5 rounded-full font-bold hover:bg-blue-800 transition shadow-lg shadow-blue-900/20 inline-block">
+                    Apply Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" onclick="toggleMenu()" class="md:hidden text-gray-700 p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 p-4 flex flex-col gap-2 z-40">
+            <a href="index.html#benefits" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">Why Us</a>
+            <a href="index.html#features" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">Features</a>
+            <a href="index.html#process" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">Process</a>
+            <a href="index.html#about" class="mobile-link text-gray-700 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">About</a>
+            <div class="mt-2 pt-2 border-t border-gray-100">
+                <a href="index.html" class="bg-blue-900 text-white px-5 py-2.5 rounded-full font-bold hover:bg-blue-800 transition shadow-lg shadow-blue-900/20 inline-block">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+<!-- Form Section -->
+ 
+<!-- HERO -->
+<section class="pt-32 pb-12 bg-gradient-to-b from-blue-50 to-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      Privacy Policy
+    </h1>
+    <p class="mt-4 text-gray-500 text-sm">
+      Last updated: January 2026
+    </p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="pb-24">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-10 space-y-6 leading-relaxed">
+        <h3>
+            This Policy is published and shall be construed to be in accordance with the provisions of the 
+            Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal 
+            Data of Information) Rules, 2011 under the Information Technology Act, 2000 and other applicable 
+            laws that require publishing of the privacy notice for collection, usage, storage, disclosure and 
+            transfer of sensitive personal data or information.
+            This Privacy Policy (hereinafter referred to as “Policy”) therefore, explains how we protect your 
+            personal information provided to us on our website i.e. www.saralvidya.in (hereinafter referred to 
+            as “Website”) and how we use that information in connection with the service offered through the 
+            Website (hereinafter called as "Service").
+        </h3>
+
+      <h2 class="text-xl font-bold text-gray-900">INTRODUCTION</h2>
+      <p>
+       <b>Saral Vidya</b>, a brand and initiative of <b> Real Money Advisory Solution Pvt. Ltd.</b> (hereinafter 
+        referred to as “Saral Vidya / we / our”) acknowledges the expectations of its customers (hereinafter 
+        referred to as “customer / you / your”) regarding privacy, confidentiality and security of personal 
+        information that resides with Saral Vidya. Keeping personal information of customers secure and 
+        preventing any misuse thereof is therefore a top priority of Saral Vidya.
+        We state that Saral Vidya is strongly committed to protect the privacy of its customers and has taken 
+        all necessary and reasonable measures in line with the best industry practice to protect the 
+        confidentiality of your personal information and its transmission through our Website.
+        This Privacy Policy covers Saral Vidya's treatment of personal information that Saral Vidya collects 
+        when you are on the Saral Vidya Website and when you use Saral Vidya's services. This policy also 
+        covers Saral Vidya's treatment of any personal information that Saral Vidya's business partners 
+        share with Saral Vidya. This policy does not apply to the practices of companies that Saral Vidya 
+        does not own or control, or to people that Saral Vidya does not employ or manage.
+        Saral Vidya collects personal information when you register on the Website, when you use Saral 
+        Vidya services relating to education loans, when you visit Saral Vidya pages, and when you 
+        participate in promotions. Saral Vidya may also receive personally identifiable information from its 
+        business partners.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">PERSONAL INFORMATION</h2>
+      <p>
+        Personal Information (“PI”) means any information/documents/details that relates to a natural 
+        person, which either directly or indirectly, in combination with other information available with 
+        Saral Vidya, can identify such person.
+        This Policy applies to PI such as details pertaining to your name, parentage, marital status, 
+        nationality, state/city of residence, residential address, e-mail address, date of birth, gender, contact 
+        number/mobile number, user IDs, passwords, recent photograph, signature image, income proof, 
+        PAN, credit score, credit information report, e-KYC through UIDAI, Aadhaar based e-Sign and 
+        such other Know Your Customer (KYC) documents like address proof, identity proof, officially 
+        valid documents/details (OVDs) accepted for concluding an education loan or related financial 
+        transaction, which may be shared/uploaded by you while availing services through the Website and 
+        to which Saral Vidya may become privy.
+        By visiting and/or using our Website, you agree to this Policy. This Policy applies to all current and 
+        former visitors of the Website. You are advised to review this Policy periodically.
+        Saral Vidya reserves the right at any time, at its sole discretion, to change, amend or otherwise 
+        modify the Policy without prior notice, and your continued access or use of this Website signifies 
+        your acceptance of the updated or modified Policy. If any material change is made, we will notify 
+        you via email or Website notice prior to the change becoming effective.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">APPLICABILITY</h2>
+        <P>
+        You, while providing your details/documents on the Website, including PI, expressly consent to 
+        Saral Vidya (including its marketing channels and business partners) contacting you via SMS, call 
+        and/or email in relation to education loan services, product information, application processing, and 
+        related offers.
+        The usage of the Website may require you to upload/key in PI for enabling faster, paperless 
+        processing of education loan applications.
+        You hereby authorize Saral Vidya to share your PI with third parties including Credit Information 
+        Companies (“CICs”) for credit profile assessment.
+        If you wish to withdraw consent, you may email support@saralvidya.in . Processing may take up to 
+        72 business hours. You expressly waive DND/DNC registration for communications related to 
+        services requested by you.
+        Saral Vidya reserves the right to disclose PI where required by law
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">CREDIT INFORMATION REPORT</h2>
+        <P>
+        Your credit information is procured through a soft inquiry from CICs with your consent. Saral 
+        Vidya has no control over the accuracy of data provided by CICs. By appointing Saral Vidya as 
+        your authorized agent, you consent to retrieval of your credit information.
+        <br>
+        <br>
+        Saral Vidya may analyze your credit profile to assist you in identifying suitable education loan 
+        products
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">OPT-OUT</h2>
+        <P>
+       If you do not wish to receive calls, you may submit a request to support@saralvidya.com from your registered email ID
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">PURPOSE AND USAGE</h2>
+        <P>
+       Saral Vidya does not sell or rent PI. PI may be shared with affiliates, lending partners, CICs, and 
+        service providers for education loan processing, underwriting, compliance, and communication.
+        Saral Vidya uses PI to:<br>
+        <br>
+        • Process loan applications<br>
+        • Send service-related alerts<br>
+        • Improve services<br>
+        • Conduct analytics and fraud prevention<br>
+        • Comply with legal obligations<br>
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">DISCLOSURE / SHARING</h2>
+        <P>
+        Saral Vidya discloses PI only as required by law, customer consent, or service facilitation. Third
+        party lenders’ privacy policies apply once you engage with them.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">RETENTION OF YOUR DATA</h2>
+        <P>
+        Saral Vidya retains PI for as long as required for service delivery, legal compliance, fraud 
+        prevention, or dispute resolution. Anonymized data may be retained for analytics.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">EMAIL & SMS COMMUNICATIONS</h2>
+        <P>
+        You may opt out of promotional communications, but service-related communications will continue.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">LOG FILES, COOKIES & TRACKING</h2>
+        <P>
+        Saral Vidya uses cookies and tracking tools to improve Website functionality and user experience.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">DATA SECURITY</h2>
+        <P>
+        Saral Vidya follows industry-standard security measures including encryption, secure servers, 
+        restricted access, firewalls, SSL encryption, and employee access controls.
+        </P>
+
+    <h2 class="text-xl font-bold text-gray-900">USER RESPONSIBILITY</h2>
+        <P>
+        You are responsible for safeguarding your login credentials. Saral Vidya is not liable for 
+        unauthorized access due to user negligence.
+        </P>
+
+      <h2 class="text-xl font-bold text-gray-900">Grievance Redressal</h2>
+      <p>
+        For grievances or concerns,contact:
+       <p><b> Grievance Officer </b></p>
+        Saral Vidya
+      </p>
+      <p>
+        Email: <a href="mailto:support@saralvidya.in" class="text-blue-700 font-medium">support@saralvidya.in</a>
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#0B1221] text-slate-400 font-sans relative overflow-hidden text-sm">
+    <!-- Top Gradient Line -->
+    <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-5">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            
+            <!-- Column 1: Brand & Compact Address (Spans 5 columns) -->
+            <div class="md:col-span-5 space-y-3">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <img src="SaralVidya (1080 x 1080 px) (2).png" alt="SaralVidya" class="h-7 w-auto brightness-200 contrast-200" 
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-lg font-bold text-white tracking-tight\'>SaralVidya</span>'">
+                </div>
+
+                <!-- Compact Address Block -->
+                <div class="text-xs leading-relaxed text-slate-400">
+                    <p>101 Shyam Anukampa, Ashok Marg, C-Scheme, Jaipur – 302001</p>
+                </div>
+
+                <!-- Mini Trust Badges -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="shield-check" class="w-2.5 h-2.5 mr-1"></i> Secure
+                    </span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="landmark" class="w-2.5 h-2.5 mr-1"></i> Regulated
+                    </span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-900/20 border border-blue-900/30 text-blue-300">
+                        <i data-lucide="landmark" class="w-2.5 h-2.5 mr-1"></i> Digital Process
+                    </span>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links (Spans 3 columns) -->
+            <div class="md:col-span-3">
+                <h4 class="text-white font-medium text-xs uppercase tracking-wider mb-2">QUICK LINKS</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Apply Now</a></li>
+                    <li><a href="index.html#about" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+                    <li><a href="/privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+                    <li><a href="/Terms-of-Services.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact (Spans 4 columns) -->
+            <div class="md:col-span-4">
+                <h4 class="text-white font-medium text-xs uppercase tracking-wider mb-2">Contact</h4>
+                <ul class="space-y-2 text-xs">
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="mail" class="w-3.5 h-3.5 text-blue-500"></i>
+                        <a href="mailto:support@saralvidya.com" class="hover:text-white transition-colors">support@saralvidya.com</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <!-- Ultra Compact Bottom Bar -->
+        <div class="mt-4 pt-3 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-500 gap-2">
+            <p>&copy; <span id="footer-year">2026</span> SaralVidya.</p>
+            <div class="flex items-center gap-1 opacity-80">
+                <span>Built for students</span>
+                <i data-lucide="heart" class="w-3 h-3 text-red-500/80 fill-red-500/20"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+        if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+    </script>
+</footer>
+
+
+<script>
+    const navbar = document.getElementById('navbar');
+
+// Always solid navbar for legal pages
+if (document.body.classList.contains('legal-page')) {
+  navbar.classList.add(
+    'glass-nav',
+    'bg-white',
+    'py-3',
+    'shadow-sm'
+  );
+} else {
+  // Homepage behavior
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add('glass-nav', 'bg-white', 'py-3', 'shadow-sm');
+      navbar.classList.remove('bg-transparent', 'py-5');
+    } else {
+      navbar.classList.remove('glass-nav', 'bg-white', 'py-3', 'shadow-sm');
+      navbar.classList.add('bg-transparent', 'py-5');
+    }
+  });
+}
+
+</script>
+<script>
+  lucide.createIcons();
+</script>
+<script>
+    // --- 1. Mobile Menu Functionality ---
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+        } else {
+            menu.classList.add('hidden');
+        }
+    }
+
+    // --- 2. Navbar Scroll Logic ---
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbar = document.getElementById('navbar');
+
+        // Initialize Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.classList.remove('bg-transparent', 'py-5');
+                    navbar.classList.add('glass-nav');
+                } else {
+                    navbar.classList.add('bg-transparent', 'py-5');
+                    navbar.classList.remove('glass-nav');
+                }
+            });
+        }
+    });
+</script>
+
+<!--Form Script-->
+<script>
+function openLoanModal() {
+    document.getElementById('loanModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLoanModal() {
+    document.getElementById('loanModal').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
